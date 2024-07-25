@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AllCats</title>
+</head>
+<body>
+<h2>Все кошке</h2>
+<br>
+<table border="1" cellpadding="10">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Имя</th>
+    <th>Возраст</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr data-th-each="element : ${allCats}">
+    <td data-th-text="${element.id}"></td>
+    <td data-th-text="${element.name}"></td>
+    <td data-th-text="${element.age}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

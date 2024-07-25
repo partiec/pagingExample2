@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+</head>
+<body>
+<h2>Список котят</h2>
+<br>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Возраст</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="element : ${pageContent}">
+        <td data-th-text="${element.id}"></td>
+        <td data-th-text="${element.name}"></td>
+        <td data-th-text="${element.age}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<label>
+    Всего элементов: <span data-th-text="${totalElements}"></span>
+    Всего страниц: <span data-th-text="${totalPages}"></span>
+    <br>
+</label>
+<span data-th-each="i : ${#numbers.sequence(1, totalPages)}">
+  <a data-th-if="${i != pageNumber}" data-th-href="@{'/api/page/' + ${i}}">[[${i}]]</a>
+  <span data-th-unless="${i != pageNumber}">[[${i}]]</span>
+</span>
+<br>
+<a data-th-if="${pageNumber > 1}" data-th-href="@{'/api/page/' + ${pageNumber - 1}}">
+    <button>Назад</button>
+</a>
+<button data-th-unless="${pageNumber > 1}">Назад</button>
+
+<a data-th-if="${pageNumber < totalPages}" data-th-href="@{'/api/page/' + ${pageNumber + 1}}">
+    <button>Вперде</button>
+</a>
+<button data-th-unless="${pageNumber < totalPages}">Вперде</button>
+</body>
+</html>
